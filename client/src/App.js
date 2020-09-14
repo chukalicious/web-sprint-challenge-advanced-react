@@ -49,6 +49,7 @@ function App() {
           path="/"
           render={() => <PlantList addToCart={addToCart} />}
         />
+
         <Route
           path="/cart"
           render={(props) => (
