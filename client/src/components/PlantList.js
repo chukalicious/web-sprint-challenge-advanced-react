@@ -29,13 +29,12 @@ export default class PlantList extends Component {
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
-    console.log("inside the render: ", this.state.plants);
     return (
       <main className="plant-list">
         {this.state.plants.map((plant) => (
           <div className="plant-card" key={plant.id}>
             <img className="plant-image" src={plant.img} alt={plant.name} />
-            <div className="plant-details">
+            <div className="plant-details" key={plant.id}>
               <h2 className="plant-name">{plant.name}</h2>
               <p className="plant-scientific-name">{plant.scientificName}</p>
               <p>{plant.description}</p>
